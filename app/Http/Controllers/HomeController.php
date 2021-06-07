@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\City;
+use App\Models\Student;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalStudent = Student::count();
+        return view('home',compact('totalStudent'));
     }
 
     public function getStateList($id){

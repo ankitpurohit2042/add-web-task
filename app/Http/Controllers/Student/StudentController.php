@@ -21,6 +21,7 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
+        \Log::info('run ajax');
         if ($request->ajax()) {
             $data = Student::all();
             return Datatables::of($data)
@@ -65,6 +66,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+
+        \Log::info('store data');
         Validator::make($request->all(), [
             'name'=> 'required',
             'grade'=> 'required',
